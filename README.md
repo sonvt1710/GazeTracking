@@ -5,43 +5,60 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![GitHub stars](https://img.shields.io/github/stars/antoinelame/GazeTracking.svg?style=social)](https://github.com/antoinelame/GazeTracking/stargazers)
 
-This is a Python (2 and 3) library that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time.
+This is a Python library (3.10+) that provides a **webcam-based eye tracking system**. It gives you the exact position of the pupils and the gaze direction, in real time.
 
 [![Demo](https://i.imgur.com/WNqgQkO.gif)](https://youtu.be/YEZMk1P0-yw)
 
-_🚀 Quick note: I'm looking for job opportunities as a software developer, for exciting projects in ambitious companies. Anywhere in the world. Send me an email!_
-
 ## Installation
 
-Clone this project:
+Clone the project:
 
 ```shell
 git clone https://github.com/antoinelame/GazeTracking.git
+cd GazeTracking
 ```
 
-### For Pip install
-Install these dependencies (NumPy, OpenCV, Dlib):
+Requires **Python 3.10+**. Pick one of the four options below.
+
+### Option 1 — pip
+
+The standard way. Works everywhere.
 
 ```shell
-pip install -r requirements.txt
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -e .
 ```
 
-> The Dlib library has four primary prerequisites: Boost, Boost.Python, CMake and X11/XQuartx. If you doesn't have them, you can [read this article](https://www.pyimagesearch.com/2017/03/27/how-to-install-dlib/) to know how to easily install them.
+### Option 2 — uv
 
+A faster alternative to pip. [Install uv first](https://docs.astral.sh/uv/getting-started/installation/).
 
-### For Anaconda install
-Install these dependencies (NumPy, OpenCV, Dlib):
+```shell
+uv venv
+uv pip install -e .
+```
+
+### Option 3 — Anaconda
+
+If you already use conda.
 
 ```shell
 conda env create --file environment.yml
-#After creating environment, activate it
 conda activate GazeTracking
 ```
 
+### Option 4 — Docker
 
-### Verify Installation
+Runs in an isolated container. **Linux only** (uses your webcam and display).
 
-Run the demo:
+```shell
+./build_and_run.sh
+```
+
+> **Trouble installing dlib?** The wheel usually installs fine. If pip tries to compile it from source, install CMake first: `brew install cmake` (macOS) or `sudo apt install cmake build-essential` (Ubuntu).
+
+### Run the demo
 
 ```shell
 python example.py
