@@ -3,6 +3,8 @@ Demonstration of the GazeTracking library.
 Check the README.md for complete documentation.
 """
 
+import sys
+
 import cv2
 
 from gaze_tracking import GazeTracking
@@ -10,9 +12,14 @@ from gaze_tracking import GazeTracking
 gaze = GazeTracking()
 webcam = cv2.VideoCapture(0)
 
+if not webcam.isOpened():
+    sys.exit("Could not open the webcam. Check that it is connected and that camera permissions are granted.")
+
 while True:
     # We get a new frame from the webcam
-    _, frame = webcam.read()
+    ret, frame = webcam.read()
+    if not ret or frame is None:
+        sys.exit("Lost the webcam stream. Check that no other app is using the camera.")
 
     # We send this frame to GazeTracking to analyze it
     gaze.refresh(frame)
