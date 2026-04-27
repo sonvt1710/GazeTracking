@@ -11,7 +11,7 @@ class GazeTracking:
     """
     This class tracks the user's gaze.
     It provides useful information like the position of the eyes
-    and pupils and allows to know if the eyes are open or closed
+    and pupils and lets you know if the eyes are open or closed.
     """
 
     def __init__(self):
@@ -41,7 +41,7 @@ class GazeTracking:
             return False
 
     def _analyze(self):
-        """Detects the face and initialize Eye objects"""
+        """Detects the face and initializes Eye objects"""
         frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
         faces = self._face_detector(frame)
 
@@ -108,7 +108,7 @@ class GazeTracking:
             return self.horizontal_ratio() >= 0.65
 
     def is_center(self):
-        """Returns true if the user is looking to the center"""
+        """Returns true if the user is looking at the center"""
         if self.pupils_located:
             return self.is_right() is not True and self.is_left() is not True
 

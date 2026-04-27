@@ -37,7 +37,7 @@ class Eye:
         return (x, y)
 
     def _isolate(self, frame, landmarks, points):
-        """Isolate an eye, to have a frame without other part of the face.
+        """Isolate an eye to have a frame without other parts of the face.
 
         Arguments:
             frame (numpy.ndarray): Frame containing the face
@@ -55,7 +55,7 @@ class Eye:
         cv2.fillPoly(mask, [region], (0, 0, 0))
         eye = cv2.bitwise_not(black_frame, frame.copy(), mask=mask)
 
-        # Cropping on the eye
+        # Cropping around the eye
         margin = 5
         min_x = np.min(region[:, 0]) - margin
         max_x = np.max(region[:, 0]) + margin
@@ -70,7 +70,7 @@ class Eye:
 
     def _blinking_ratio(self, landmarks, points):
         """Calculates a ratio that can indicate whether an eye is closed or not.
-        It's the division of the width of the eye, by its height.
+        It's the division of the width of the eye by its height.
 
         Arguments:
             landmarks (dlib.full_object_detection): Facial landmarks for the face region
@@ -96,7 +96,7 @@ class Eye:
 
     def _analyze(self, original_frame, landmarks, side, calibration):
         """Detects and isolates the eye in a new frame, sends data to the calibration
-        and initializes Pupil object.
+        and initializes the Pupil object.
 
         Arguments:
             original_frame (numpy.ndarray): Frame passed by the user

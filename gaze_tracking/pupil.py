@@ -35,7 +35,7 @@ class Pupil:
         return new_frame
 
     def detect_iris(self, eye_frame):
-        """Detects the iris and estimates the position of the iris by
+        """Detects the iris and estimates the position of the pupil by
         calculating the centroid.
 
         Arguments:
