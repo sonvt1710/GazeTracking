@@ -1,9 +1,9 @@
-from __future__ import division
 import cv2
+
 from .pupil import Pupil
 
 
-class Calibration(object):
+class Calibration:
     """
     This class calibrates the pupil detection algorithm by finding the
     best binarization threshold value for the person and the webcam.

@@ -1,12 +1,13 @@
-from __future__ import division
 import os
+
 import cv2
 import dlib
-from .eye import Eye
+
 from .calibration import Calibration
+from .eye import Eye
 
 
-class GazeTracking(object):
+class GazeTracking:
     """
     This class tracks the user's gaze.
     It provides useful information like the position of the eyes

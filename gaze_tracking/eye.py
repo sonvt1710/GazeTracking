@@ -1,10 +1,12 @@
 import math
-import numpy as np
+
 import cv2
+import numpy as np
+
 from .pupil import Pupil
 
 
-class Eye(object):
+class Eye:
     """
     This class creates a new frame to isolate the eye and
     initiates the pupil detection.

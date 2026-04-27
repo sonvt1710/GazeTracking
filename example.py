@@ -4,6 +4,7 @@ Check the README.md for complete documentation.
 """
 
 import cv2
+
 from gaze_tracking import GazeTracking
 
 gaze = GazeTracking()
@@ -39,6 +40,6 @@ while True:
 
     if cv2.waitKey(1) == 27:
         break
-   
+
 webcam.release()
 cv2.destroyAllWindows()

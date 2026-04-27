@@ -1,8 +1,8 @@
-import numpy as np
 import cv2
+import numpy as np
 
 
-class Pupil(object):
+class Pupil:
     """
     This class detects the iris of an eye and estimates
     the position of the pupil
