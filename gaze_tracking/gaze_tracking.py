@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 import cv2
 import dlib
@@ -24,9 +24,8 @@ class GazeTracking:
         self._face_detector = dlib.get_frontal_face_detector()
 
         # _predictor is used to get facial landmarks of a given face
-        cwd = os.path.abspath(os.path.dirname(__file__))
-        model_path = os.path.abspath(os.path.join(cwd, "trained_models/shape_predictor_68_face_landmarks.dat"))
-        self._predictor = dlib.shape_predictor(model_path)
+        model_path = Path(__file__).parent / "trained_models" / "shape_predictor_68_face_landmarks.dat"
+        self._predictor = dlib.shape_predictor(str(model_path))
 
     @property
     def pupils_located(self):
@@ -37,7 +36,7 @@ class GazeTracking:
             int(self.eye_right.pupil.x)
             int(self.eye_right.pupil.y)
             return True
-        except Exception:
+        except (AttributeError, TypeError):
             return False
 
     def _analyze(self):
